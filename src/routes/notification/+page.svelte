@@ -2,6 +2,7 @@
 	// @ts-nocheck
 
 	import { Card, Listgroup, Avatar, Button } from 'flowbite-svelte';
+	import PageHeader from '$lib/components/page-header.svelte';
 
 	let list = [
 		{
@@ -80,6 +81,7 @@
 	<meta name="desciption" content="Notification" />
 </svelte:head>
 
+<PageHeader title ="通知"/>
 <Card padding="xl" size="md">
 	<div class="mb-4 flex items-center justify-between">
 		<h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Latest Customers</h5>
