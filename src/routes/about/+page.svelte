@@ -11,6 +11,7 @@
 		following into your command line and following the prompts:
 	</p>
 
+
 	<pre>npm create svelte@latest</pre>
 
 	<p>
