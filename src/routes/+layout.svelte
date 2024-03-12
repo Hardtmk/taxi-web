@@ -1,18 +1,44 @@
 <script>
+	import { Button } from 'flowbite-svelte';
 	import '../app.pcss';
 	import Header from './Header.svelte';
 	import './styles.css';
+	import { onMount } from 'svelte';
+
+	/** @type {any} */
+	let promptEvent;
+
+	onMount(() => {
+		window.addEventListener('beforeinstallprompt', (event) => {
+			console.log('d');
+			event.preventDefault();
+
+			promptEvent = event;
+		});
+	});
+
+	function test() {
+		console.log(promptEvent, 'promptEvent是甚麼呢');
+		promptEvent.prompt();
+	}
 </script>
 
 <div class="app">
 	<Header></Header>
-
-	<main   >
+	<!-- <Button on:click={test}>測試中</Button> -->
+	<main>
 		<slot />
 	</main>
 
 	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+		<div class="text-center">
+			<p>
+				<a
+					href="https://docs.google.com/document/d/1-3nhC-errhQQSo4EUp3DIqTt_7tUEtt8eBYcF2Le25o/edit?usp=sharing"
+					>please leave me a comment about how to improve this app</a
+				>
+			</p>
+		</div>
 	</footer>
 </div>
 
@@ -23,14 +49,27 @@
 		min-height: 100vh;
 	}
 
+	@font-face {
+		font-family: 'Gelasio';
+		font-style: normal;
+		font-weight: 300;
+		src:
+			local('Gelasio Regular'),
+			local('Gelasio-Regular'),
+			url(https://fonts.googleapis.com/css2?family=Ojuju:wght@200..800&display=swap) format('woff2');
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+			U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	}
+
 	main {
 		flex: 1;
 		display: flex;
 		flex-direction: column;
 		padding: 1rem;
 		width: 100%;
-		max-width: 64rem;
-		margin: 0 auto;
+		margin: auto auto;
+		max-width: 84rem;
+		font-family: 'Lora';
 		box-sizing: border-box;
 	}
 

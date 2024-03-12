@@ -2,8 +2,8 @@
 	// @ts-nocheck
 
 	import { Card, Listgroup, Avatar, Button } from 'flowbite-svelte';
-	import PageHeader from '$lib/components/page-header.svelte';
-
+	import PageHeader from '$lib/components/common/page-header.svelte';
+	import PresetButton from '$lib/components/common/preset-button.svelte';
 	let list = [
 		{
 			img: {
@@ -81,34 +81,40 @@
 	<meta name="desciption" content="Notification" />
 </svelte:head>
 
-<PageHeader title ="通知"/>
-<Card padding="xl" size="md">
-	<div class="mb-4 flex items-center justify-between">
-		<h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Latest Customers</h5>
-		<a href="/" class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">
-			View all
-		</a>
-	</div>
-	<Listgroup items={list} let:item class="border-0 dark:!bg-transparent">
-		<div class="flex items-center space-x-4 rtl:space-x-reverse">
-			<Avatar src={item.img.src} alt={item.img.alt} class="flex-shrink-0" />
-			<div class="min-w-0 flex-1">
-				<p class="truncate text-sm font-medium text-gray-900 dark:text-white">
-					{item.name}
-				</p>
-				<p class="truncate text-sm text-gray-500 dark:text-gray-400">
-					{item.message}
-				</p>
+<PageHeader title="通知" />
+<section>
+	<Card size="xl">
+		<Listgroup items={list} let:item class="border-0 dark:!bg-transparent">
+			<div class="flex items-center space-x-4 rtl:space-x-reverse">
+				<Avatar src={item.img.src} alt={item.img.alt} class="flex-shrink-0" />
+				<div class="min-w-0 flex-1">
+					<p class="truncate text-sm font-medium text-gray-900 dark:text-white">
+						{item.name}
+					</p>
+					<p class="truncate text-sm text-gray-500 dark:text-gray-400">
+						{item.message}
+					</p>
+				</div>
+				<div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+					{item.time}
+				</div>
 			</div>
-			<div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-				{item.time}
-			</div>
-		</div>
-		{#if item.hasAction}
-			<div class="flex justify-end space-x-3">
-				<Button size="sm"  >允許</Button>
-				<Button size="sm">拒絕</Button>
-			</div>
-		{/if}
-	</Listgroup>
-</Card>
+			{#if item.hasAction}
+				<div class="flex justify-end space-x-3">
+					<Button size="sm">允許</Button>
+					<Button size="sm">拒絕</Button>
+				</div>
+			{/if}
+		</Listgroup>
+	</Card>
+</section>
+
+<style>
+	section {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		flex: 0.6;
+	}
+</style>

@@ -26,9 +26,9 @@
 			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
 				<a href="/sverdle">Sverdle</a>
 			</li> -->
-			<li aria-current={$page.url.pathname.startsWith('/dashboard')?'page':undefined}>
+			<!-- <li aria-current={$page.url.pathname.startsWith('/dashboard')?'page':undefined}>
 			<a href="/dashboard">Dashboard</a>
-			</li>
+			</li> -->
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
@@ -40,11 +40,11 @@
 			<img src={notification} alt="GitHub" />
 		</a>
 	
-		<a  href="https://github.com/sveltejs/kit">
+		<a  href="/group">
 			<img src={group} alt="GitHub" />
 		</a>
 	</div>
-</header>d
+</header>
 
 <style>
 	header {
