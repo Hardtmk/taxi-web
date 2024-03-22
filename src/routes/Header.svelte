@@ -1,8 +1,8 @@
 <script>
 	import { page } from '$app/stores';
-	import notification from '$lib/icons/notification.svg'
-	import group from '$lib/icons/group.svg'
-	import backwardIcon from '$lib/icons/backward.svg'
+	import notification from '$lib/icons/notification.svg';
+	import group from '$lib/icons/group.svg';
+	import backwardIcon from '$lib/icons/backward.svg';
 </script>
 
 <header>
@@ -35,13 +35,13 @@
 		</svg>
 	</nav>
 
-	<div class="corner flex ">
+	<div class="corner flex">
 		<a href="/notification">
-			<img src={notification} alt="GitHub" />
+			<img src={notification} alt="notification" />
 		</a>
-	
-		<a  href="/group">
-			<img src={group} alt="GitHub" />
+
+		<a href="/group">
+			<img src={group} alt="group" />
 		</a>
 	</div>
 </header>

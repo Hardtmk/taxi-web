@@ -1,0 +1,12 @@
+{
+    "name": "@taxi-sharing/utils-locale",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {},
+    "devDependencies": {
+      "svelte": "^3.59.2",
+      "svelte-i18n": "^3.7.0"
+    }
+  }
+  

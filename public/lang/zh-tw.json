@@ -1,0 +1,20 @@
+{
+"taxi-group":{
+    "info":{
+        "endPoint":"終點",
+        "startPoint":"起點",
+        "contactEmail":"聯絡電郵",
+        "contactNumber":"聯絡手提",
+        "limit":"人數限制",
+        "remark":"備註",
+        "departureTime":"出發時間",
+        "extraContribution" :"額外貢獻"
+    },
+    "notification":{
+        "group-dismissed":"{group}已經被解散",
+        "group-member-joined" :"{group}增加了成員{member}",
+        "group-member-exited":"{group}移除了成員（member）",
+        "group-application-received":"{group}收到(member)的入組申請"   
+    }
+}
+}
