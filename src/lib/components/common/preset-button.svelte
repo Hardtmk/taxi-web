@@ -5,6 +5,7 @@
 	export let content = '按鈕';
 	export let onClick= function(){}
 	export let type="button"
+	
 
 </script>
 

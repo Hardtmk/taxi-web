@@ -9,9 +9,7 @@
 <Card padding="xl" class="round-3xl w-full min-w-80 max-w-full  text-sm  md:text-lg ">
 	<div class="flex justify-between">
 		<p>
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam commodi similique quos,
-			tempore reiciendis maiores ut illo soluta, fugit eligendi recusandae quisquam veniam. Atque
-			laudantium nobis quibusdam reiciendis rem. Rem.
+			{remark}
 		</p>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -29,3 +27,7 @@
 		</svg>
 	</div>
 </Card>
+<!-- 點擊加入
+移除群組
+曾經 join 過的所有群組
+都要搞埋個註冊才可以 -->

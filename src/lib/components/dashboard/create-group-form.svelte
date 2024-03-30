@@ -8,28 +8,48 @@
 	import { reporter } from '@felte/reporter-svelte';
 	import { validator } from '@felte/validator-zod';
 	import FormErrorMessages from '../common/form-error-messages..svelte';
-	import { inputClass } from 'flowbite-svelte/Radio.svelte';
-
+	import { createGroup } from '$lib/api/group';
+	import toast, { Toaster } from 'svelte-french-toast';
+	
+	const dispatch = createEventDispatcher();
 	export let formModal = false;
 	setTaxiGroupContext({ isEditingMode: false });
 	const { taxiGroup } = getTaxiGroupContext();
-
 	const { form, data, setData, isSubmitting, createSubmitHandler, isDirty, reset } = createForm({
 		extend: [validator({ schema: groupFormSchema }), reporter],
-		onSubmit: (/** @type {any} */ values) => {}
+		onSubmit: (/** @type {any} */ values) => {
+			$taxiGroup.created_at = new Date();
+			return createGroup($taxiGroup);
+		},
+		onSuccess() {
+			formModal = false;
+			toast.success('搭車群組建立成功');
+			reset();
+			dispatch('reload');
+		},
+
+		onError(err) {
+			if (err.response.status === 500) {
+				toast.error('網絡出現異常');
+			} else {
+				toast.error(err.response.data.message);
+			}
+		}
 	});
 </script>
+
+<Toaster />
 
 <Modal bind:open={formModal} size="xs" autoclose={false} class="w-full">
 	<form use:form>
 		<div class="mb-6 w-full">
-			<Label for="success" color="green" class="mb-2 block">終點站</Label>
+			<Label class="mb-2 block">終點站</Label>
 			<Input id="end_point" name="end_point" type="text" bind:value={$taxiGroup.end_point} />
 			<FormErrorMessages inputClass="end_point" />
 		</div>
 
 		<div class="mb-6 w-full">
-			<Label for="error" class="mb-2 block">起點</Label>
+			<Label class="mb-2 block">起點</Label>
 			<Input id="start_point" name="start_point" bind:value={$taxiGroup.start_point} />
 			<FormErrorMessages inputClass="start_point" />
 		</div>

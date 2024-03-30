@@ -4,15 +4,24 @@
 	import Header from './Header.svelte';
 	import './styles.css';
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
+	import { getUserContext, setUserContext } from '$lib/components/user/index.context';
+	import { page } from '$app/stores';
+	import { redirect } from '@sveltejs/kit';
 
+	$: {
+		// if (!loggined) {
+		// 	goto(`/auth/login/`);
+		// }
+	}
 	/** @type {any} */
 	let promptEvent;
+	// let isLoggined = true;
 
 	onMount(() => {
+		//  一樣，如果沒有login，就回去這個login 畫面
 		window.addEventListener('beforeinstallprompt', (event) => {
-			console.log('d');
 			event.preventDefault();
-
 			promptEvent = event;
 		});
 	});
@@ -25,7 +34,7 @@
 
 <div class="app">
 	<Header></Header>
-	<!-- <Button on:click={test}>測試中</Button> -->
+	<Button on:click={test}>測試中</Button>
 	<main>
 		<slot />
 	</main>

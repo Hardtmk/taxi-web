@@ -1,9 +1,12 @@
 <script>
 	import MemberSection from '$lib/components/group/membebr-section.svelte';
-
 	import Destination from '$lib/components/group/destination.svelte';
 	import GroupAction from '$lib/components/group/group-action.svelte';
 	import Remark from '$lib/components/group/remark.svelte';
+
+	/** @type {import('./$types').PageData} */
+	export let data;
+	const { end_point, members, remark } = data;
 	let list = [
 		{
 			img: { src: '/images/profile-picture-2.webp', alt: 'Neil Sims' },
@@ -27,11 +30,11 @@
 </script>
 
 <div class="flex-col space-y-6">
-	<MemberSection {list} />
+	<MemberSection list={members} />
 
-	<Destination destination="藍田地鐵站" />
+	<Destination destination={end_point} />
 
-	<Remark remark="" />
+	<Remark {remark} />
 
 	<GroupAction />
 </div>

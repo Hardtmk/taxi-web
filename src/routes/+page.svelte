@@ -2,24 +2,19 @@
 	import GroupList from '$lib/components/dashboard/group-list.svelte';
 	import PresetButton from '$lib/components/common/preset-button.svelte';
 	import CreateGroupForm from '$lib/components/dashboard/create-group-form.svelte';
+	import { goto } from '$app/navigation';
 
 	/** @type {import('./$types').PageData} */
 
 	export let data;
 	let formModal = false;
 
-	function createTaxiGroup() {
+	function openForm() {
 		formModal = true;
 	}
-
-	async function handleSubmit() {
-		await fetch('/api/group', {
-			method: 'POST',
-			body: JSON.stringify({ name: 'hardy' }),
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		});
+	function reload() {
+		const thisPage = window.location.pathname;
+		goto('/');
 	}
 </script>
 
@@ -30,9 +25,9 @@
 
 <section>
 	<GroupList {data} />
-	<CreateGroupForm bind:formModal />
+	<CreateGroupForm bind:formModal on:reload={reload} />
 </section>
-<PresetButton extraClass="" content="新建群組" onClick={createTaxiGroup} />
+<PresetButton extraClass="" content="新建群組" onClick={openForm} />
 
 <style>
 	section {

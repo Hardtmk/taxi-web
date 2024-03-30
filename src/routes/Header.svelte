@@ -40,7 +40,7 @@
 			<img src={notification} alt="notification" />
 		</a>
 
-		<a href="/group">
+		<a href="/group/[slug]">
 			<img src={group} alt="group" />
 		</a>
 	</div>

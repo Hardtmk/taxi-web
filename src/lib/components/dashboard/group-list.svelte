@@ -1,7 +1,10 @@
 <script>
+	// @ts-nocheck
+
 	import { Card, Popover } from 'flowbite-svelte';
 	import ArrowRight from '$lib/icons/arrow-right.svg';
 	import PresetButton from '../common/preset-button.svelte';
+	import { goto } from '$app/navigation';
 	export let data;
 
 	let list = data.response;
@@ -72,7 +75,11 @@
 				<p class="text-end">{item.end_point}</p>
 			</div>
 
-			<PresetButton extraClass="bg-[#009688]" content="點擊加入" />
+			<PresetButton
+				extraClass="bg-[#009688]"
+				content="詳情"
+				onClick={() => goto(`/group/${item._id}`)}
+			/>
 		</Card>
 	{/each}on
 </div>

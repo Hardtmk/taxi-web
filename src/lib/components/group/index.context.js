@@ -10,7 +10,9 @@ const initialState = () => {
 		limit: 5,
 		contact_number: null,
 		contact_email: '',
-		start_point: ''
+		start_point: '',
+		created_at: null,
+		updated_at: null
 	};
 };
 
