@@ -9,17 +9,17 @@ const initialState = () => {
 	};
 };
 
-const setUserContext = ({ isLogin = false }) => {
+const setUserContext = ({ isEditing = false }) => {
 	const userInfo = writable(initialState());
-	const isLoginMode = writable(isLogin);
+	const isEditingMode = writable(isEditing);
 	setContext('user', userInfo);
-	setContext('isLogin', isLoginMode);
+	setContext('isEditing', isEditingMode);
 };
 
 const getUserContext = () => {
 	const user = getContext('user');
-	const isLogin = getContext('isLogin');
-	return { user, isLogin };
+	const isEditing = getContext('isEditing');
+	return { user, isEditing };
 };
 
 export { setUserContext, getUserContext };

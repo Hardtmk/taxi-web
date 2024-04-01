@@ -10,9 +10,7 @@
 	import { userFormSchema } from '$lib/validations/create-user-form';
 	import { setUserContext, getUserContext } from '$lib/components/user/index.context';
 	import FormErrorMessages from '$lib/components/common/form-error-messages..svelte';
-	import { goto } from '$app/navigation';
 
-	// 這是一個註冊畫面
 	setUserContext({ isEditingMode: false });
 	const { user } = getUserContext();
 	const { form, data, setData, isSubmitting, createSubmitHandler, isDirty, reset } = createForm({

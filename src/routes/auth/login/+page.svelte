@@ -11,8 +11,9 @@
 	import { setUserContext, getUserContext } from '$lib/components/user/index.context';
 	import FormErrorMessages from '$lib/components/common/form-error-messages..svelte';
 	import { goto } from '$app/navigation';
-	setUserContext({ isLogin: false });
-	const { user } = getUserContext();
+
+	setUserContext({ isEditing: false });
+	const { user, isEditing } = getUserContext();
 	const { form, data, setData, isSubmitting, createSubmitHandler, isDirty, reset } = createForm({
 		extend: [validator({ schema: userFormSchema }), reporter],
 		onSubmit: (/** @type {any} */ values) => {
@@ -21,6 +22,7 @@
 		onSuccess(response) {
 			const { userInfo, token } = response.data;
 			$user = userInfo;
+			$isEditing = true;
 			localStorage.setItem('token', token);
 			reset();
 			goto('/');

@@ -9,11 +9,6 @@
 	import { page } from '$app/stores';
 	import { redirect } from '@sveltejs/kit';
 
-	$: {
-		// if (!loggined) {
-		// 	goto(`/auth/login/`);
-		// }
-	}
 	/** @type {any} */
 	let promptEvent;
 	// let isLoggined = true;
@@ -34,7 +29,7 @@
 
 <div class="app">
 	<Header></Header>
-	<Button on:click={test}>測試中</Button>
+	<!-- <Button on:click={test}>測試中</Button> -->
 	<main>
 		<slot />
 	</main>

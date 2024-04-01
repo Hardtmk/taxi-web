@@ -6,7 +6,7 @@
 import { tryCatchPromise } from '../utils/promise';
 import { request } from '../utils/request';
 
-/** @type {import('./$types').PageLoad} */
+/** @type {import('../$types').PageLoad} */
 export const load = async () => {
 	try {
 		const [error, result] = await tryCatchPromise(
