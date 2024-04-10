@@ -12,9 +12,11 @@ const initialState = () => {
 		contact_email: '',
 		start_point: '',
 		created_at: null,
-		updated_at: null
+		updated_at: null,
+		members: []
 	};
 };
+
 
 const setTaxiGroupContext = ({ isEditingMode = false }) => {
 	const taxiGroup = writable(initialState());
@@ -32,3 +34,4 @@ const getTaxiGroupContext = () => {
 };
 
 export { setTaxiGroupContext, getTaxiGroupContext };
+

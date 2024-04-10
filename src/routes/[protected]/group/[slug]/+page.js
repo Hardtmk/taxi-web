@@ -1,5 +1,5 @@
-import { request } from '../../../utils/request';
-import { tryCatch, tryCatchPromise } from '../../../utils/promise';
+import { request } from '../../../../utils/request';
+import { tryCatchPromise } from '../../../../utils/promise';
 // @ts-ignore
 export const load = async ({ params }) => {
 	try {

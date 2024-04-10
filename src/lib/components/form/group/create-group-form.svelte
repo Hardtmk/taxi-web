@@ -1,16 +1,20 @@
 <script>
 	import { Label, Input, Modal } from 'flowbite-svelte';
-	import { getTaxiGroupContext, setTaxiGroupContext } from '$lib/components/group/index.context';
+	import {
+		getTaxiGroupContext,
+		setTaxiGroupContext
+	} from '$lib/components/form/group/index.context';
 	import PresetButton from '$lib/components/common/preset-button.svelte';
 	import { groupFormSchema } from '$lib/validations/create-group-form';
 	import { createForm } from 'felte';
 	import { createEventDispatcher } from 'svelte';
 	import { reporter } from '@felte/reporter-svelte';
 	import { validator } from '@felte/validator-zod';
-	import FormErrorMessages from '../common/form-error-messages..svelte';
+	import FormErrorMessages from '../../common/form-error-messages..svelte';
 	import { createGroup } from '$lib/api/group';
 	import toast, { Toaster } from 'svelte-french-toast';
-	
+	import { userStore } from '$lib/store/user';
+
 	const dispatch = createEventDispatcher();
 	export let formModal = false;
 	setTaxiGroupContext({ isEditingMode: false });
@@ -19,6 +23,7 @@
 		extend: [validator({ schema: groupFormSchema }), reporter],
 		onSubmit: (/** @type {any} */ values) => {
 			$taxiGroup.created_at = new Date();
+			$taxiGroup.created_by = $userStore.userId;
 			return createGroup($taxiGroup);
 		},
 		onSuccess() {
@@ -103,8 +108,6 @@
 			<Input id="remark" name="remark" required bind:value={$taxiGroup.remark} />
 			<FormErrorMessages inputClass="remark" />
 		</div>
-
-		<!-- token -->
 
 		<PresetButton type="submit" content="提交" />
 	</form>

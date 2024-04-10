@@ -4,14 +4,12 @@
 	import { createUser } from '$lib/api/user';
 	import { createForm } from 'felte';
 	import toast, { Toaster } from 'svelte-french-toast';
-	import { createEventDispatcher } from 'svelte';
 	import { reporter } from '@felte/reporter-svelte';
 	import { validator } from '@felte/validator-zod';
 	import { userFormSchema } from '$lib/validations/create-user-form';
-	import { setUserContext, getUserContext } from '$lib/components/user/index.context';
+	import { setUserContext, getUserContext } from '$lib/components/form/user/index.context';
 	import FormErrorMessages from '$lib/components/common/form-error-messages..svelte';
-
-	setUserContext({ isEditingMode: false });
+	setUserContext({ isEditing: false });
 	const { user } = getUserContext();
 	const { form, data, setData, isSubmitting, createSubmitHandler, isDirty, reset } = createForm({
 		extend: [validator({ schema: userFormSchema }), reporter],
@@ -23,6 +21,7 @@
 		},
 
 		onError(err) {
+			console.log(err, '錯誤是什麼');
 			if (err.response.status === 500) {
 				toast.error('網絡出現異常');
 			} else {
@@ -80,10 +79,5 @@
 			>
 		</div>
 	</form>
-
-	<!-- 一禁入去，當發覺是沒有我想要的session的時候，我就會是 -->
-	<!-- 先去login, 然後再去register -->
 </div>
 <Toaster />
-
-<!-- 有一點兒想模仿下其他人的login是怎麼做的 -->
