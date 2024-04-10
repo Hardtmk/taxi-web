@@ -37,6 +37,5 @@ export async function handle({ event, resolve }) {
 			throw redirect(302, '/auth/login');
 		}
 	}
-
 	return resolve(event);
 }

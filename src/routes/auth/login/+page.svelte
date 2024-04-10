@@ -3,15 +3,12 @@
 	import PresetButton from '$lib/components/common/preset-button.svelte';
 	import { createForm } from 'felte';
 	import toast, { Toaster } from 'svelte-french-toast';
-	import { createEventDispatcher } from 'svelte';
 	import { reporter } from '@felte/reporter-svelte';
 	import { validator } from '@felte/validator-zod';
 	import { userFormSchema } from '$lib/validations/create-user-form';
 	import { setUserContext, getUserContext } from '$lib/components/form/user/index.context';
 	import FormErrorMessages from '$lib/components/common/form-error-messages..svelte';
 	import { goto } from '$app/navigation';
-	import { userStore } from '$lib/store/user';
-	import { setContext } from 'svelte';
 
 	setUserContext({ isEditing: false });
 	const { user, isEditing } = getUserContext();
@@ -61,16 +58,3 @@
 	</form>
 </div>
 <Toaster />
-<!-- <form action="/auth/login" method="POST">
-	<input type="text" name="email" placeholder="email" />
-	<input type="password" name="password" placeholder="Password" />
-	<button type="submit">Sign in</button>
-</form> -->
-
-<!-- routing這些都的 -->
-
-<!-- 我要做一個很快的app -->
-
-<!-- 但是如何和action combine 埋一齊呢 -->
-
-<!--  -->

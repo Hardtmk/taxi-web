@@ -27,7 +27,4 @@ const createUserStore = async () => {
 
 const userStore = await createUserStore();
 
-const islogin = writable(false);
-
-export { userStore, islogin };
-// 要思考的位置，isLoggin 這個位置應該要放在哪裡呢
+export { userStore };

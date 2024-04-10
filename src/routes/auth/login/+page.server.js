@@ -1,5 +1,3 @@
-import { redirect } from '@sveltejs/kit';
-import { goto } from '$app/navigation';
 import { request } from '../../../utils/request';
 import { tryCatchPromise } from '../../../utils/promise';
 
@@ -40,9 +38,3 @@ export const actions = {
 		}
 	}
 };
-
-// 是不是一定要用到server才可以呢
-// 只是return user，並沒有return任何其他東西
-//
-
-// hooks.server 都是需要整架lol， 那麼user一輸入http://localhost:5173/protected,就可以直接入到畫面

@@ -2,7 +2,7 @@
 	import Header from './Header.svelte';
 	import '../../app.pcss';
 	import '../styles.css';
-	import { userStore, islogin } from '$lib/store/user';
+	import { userStore } from '$lib/store/user';
 
 	const initUserStore = async () => {
 		const userId = sessionStorage.getItem('userId');
