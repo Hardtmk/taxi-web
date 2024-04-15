@@ -3,47 +3,64 @@
 	import notification from '$lib/icons/notification.svg';
 	import group from '$lib/icons/group.svg';
 	import backwardIcon from '$lib/icons/backward.svg';
+	import Profile from '$lib/icons/profile.svg';
+	import SideBarToggle from '$lib/components/layout/sidebar-toggle.svelte';
+	import { isSideMenuOpen, toggleSideMenu } from '$lib/store/sidebar.js';
+	import IconSvg from '$lib/components/common/icon-svg.svelte';
+	import {
+		Navbar,
+		NavBrand,
+		NavLi,
+		NavUl,
+		NavHamburger,
+		Avatar,
+		DropdownItem,
+		DropdownHeader,
+		Dropdown,
+		DropdownDivider
+	} from 'flowbite-svelte';
+	let activeUrl = false;
 </script>
 
 <header>
-	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={backwardIcon} alt="SvelteKit" />
-		</a>
-	</div>
+	<Navbar>
+		<NavBrand>
+			<span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white"
+				>千里共乘的</span
+			>
+		</NavBrand>
+		<div class="">
+			{#if $isSideMenuOpen}
+				<SideBarToggle />
+			{/if}
+	
+			<div class="flex items-center md:order-2">
+				
+				<button on:click={() => toggleSideMenu()} type="button">
+					<!-- <img src={Profile} alt="group" /> -->
+					<Avatar id="avatar-menu" src="/images/profile-picture-3.webp" />
+					
+				</button>
+			</div>
+		</div>
+		<!-- <div class="flex items-center md:order-2">
+			<Avatar id="avatar-menu" src="/images/profile-picture-3.webp" />
+			<NavHamburger class1="w-full md:flex md:w-auto md:order-1" />
+		</div>
+		<Dropdown placement="bottom" triggeredBy="#avatar-menu">
+			<DropdownHeader>
+				<span class="block text-sm">Bonnie Green</span>
+				<span class="block truncate text-sm font-medium">name@flowbite.com</span>
+			</DropdownHeader>
+			<DropdownItem>Dashboard</DropdownItem>
+			<DropdownItem>Settings</DropdownItem>
+			<DropdownItem>Earnings</DropdownItem>
+			<DropdownDivider />
+			<DropdownItem>Sign out</DropdownItem>
+		</Dropdown> -->
+	</Navbar>
 
-	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<!-- <li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
-			</li> -->
-			<!-- <li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">About</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
-			</li> -->
-			<!-- <li aria-current={$page.url.pathname.startsWith('/dashboard')?'page':undefined}>
-			<a href="/dashboard">Dashboard</a>
-			</li> -->
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
-	</nav>
 
-	<div class="corner flex">
-		<a href="/notification">
-			<img src={notification} alt="notification" />
-		</a>
-
-		<a href="/group/[slug]">
-			<img src={group} alt="group" />
-		</a>
-	</div>
 </header>
 
 <style>

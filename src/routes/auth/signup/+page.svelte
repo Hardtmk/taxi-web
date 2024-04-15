@@ -13,15 +13,11 @@
 	const { user } = getUserContext();
 	const { form, data, setData, isSubmitting, createSubmitHandler, isDirty, reset } = createForm({
 		extend: [validator({ schema: userFormSchema }), reporter],
-		onSubmit: (/** @type {any} */ values) => {
-			return createUser($user);
-		},
+
 		onSuccess(response) {
 			reset();
 		},
-
 		onError(err) {
-			console.log(err, '錯誤是什麼');
 			if (err.response.status === 500) {
 				toast.error('網絡出現異常');
 			} else {
@@ -32,7 +28,13 @@
 </script>
 
 <div class="space-y-4 p-6 sm:p-8 md:space-y-6">
-	<form class="flex flex-col space-y-6" use:form>
+	<form
+		class="flex flex-col space-y-6"
+		use:form
+		on:submit|preventDefault
+		action="/auth/signup"
+		method="post"
+	>
 		<h3 class="p-0 text-xl font-medium text-gray-900 dark:text-white">Create and account</h3>
 		<Label class="space-y-2">
 			<span>姓名</span>
@@ -81,3 +83,9 @@
 	</form>
 </div>
 <Toaster />
+
+
+<!-- and just keep speaking and speaking, you will focus soon  -->
+<!-- just  , once you have chat room, everything will be different
+	
+-->

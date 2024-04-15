@@ -8,10 +8,12 @@ export const actions = {
 		const email = data.get('email');
 		const password = data.get('password');
 		const payload = { email, password };
+
+		console.log(payload,'payload是')
 		try {
 			const [error, result] = await tryCatchPromise(
 				request().post(
-					'https://pclpt5yh53.execute-api.ap-east-1.amazonaws.com/v1/taxi-sharing/auth/login',
+					'https://pclpt5yh53.execute-api.ap-east-1.amazonaws.com/v1/taxi-sharing/user',
 					{ body: payload }
 				)
 			);
@@ -37,3 +39,4 @@ export const actions = {
 		}
 	}
 };
+

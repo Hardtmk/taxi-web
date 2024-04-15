@@ -11,6 +11,8 @@ function isPathAllowed(path) {
 	);
 }
 
+// 如果沒有cookies，就會自動登出
+
 export async function handle({ event, resolve }) {
 	let url = new URL(event.request.url);
 	if (event.cookies.get('userId')) {
@@ -39,3 +41,7 @@ export async function handle({ event, resolve }) {
 	}
 	return resolve(event);
 }
+
+
+
+
