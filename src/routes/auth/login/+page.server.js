@@ -1,5 +1,5 @@
-import { request } from '../../../utils/request';
-import { tryCatchPromise } from '../../../utils/promise';
+import { request } from '../../../lib/utils/request';
+import { tryCatchPromise } from '../../../lib/utils/promise';
 
 export const actions = {
 	// @ts-ignore

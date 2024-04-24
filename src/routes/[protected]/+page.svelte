@@ -42,6 +42,19 @@
 </section>
 <PresetButton extraClass="" content="新建群組" onClick={openForm} />
 
+<!-- 最core的function是什麼呢
+create group 
+join group
+exit group 
+group deleted not active 
+list group
+notification 
+這些都是要考慮的
+不如你請人幫你搞定
+我也是這麼想的
+
+-->
+
 <style>
 	section {
 		display: flex;

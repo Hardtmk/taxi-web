@@ -3,11 +3,17 @@
 	import '../../app.pcss';
 	import '../styles.css';
 	import { userStore } from '$lib/store/user';
+	import { goto } from '$app/navigation';
 
 	const initUserStore = async () => {
 		const userId = sessionStorage.getItem('userId');
 		userStore.init({ userId });
 	};
+
+	async function handleSignOut(event) {
+		const status = event.detail.signout;
+		await goto(`/?signout=${status}`);
+	}
 </script>
 
 {#await initUserStore()}
@@ -16,7 +22,7 @@
 	{/await}
 {:then}
 	<div class="app">
-		<Header></Header>
+		<Header on:signout={handleSignOut}></Header>
 		<main>
 			<slot />
 		</main>

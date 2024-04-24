@@ -78,8 +78,10 @@
 			<PresetButton
 				extraClass="bg-[#009688]"
 				content="詳情"
-				onClick={() => goto(`/group/${item._id}`)}
+				onClick={() => goto(`/protected/group/${item._id}`)}
 			/>
 		</Card>
 	{/each}on
 </div>
+<!-- 有些話，始終在我心目中，都是有影響的，是的，我的確是一個loser，感謝你，sunny -->
+<!--  -->

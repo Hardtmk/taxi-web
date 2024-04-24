@@ -1,17 +1,7 @@
 <script>
-	import { page } from '$app/stores';
-	import notification from '$lib/icons/notification.svg';
-	import group from '$lib/icons/group.svg';
-	import backwardIcon from '$lib/icons/backward.svg';
-	import Profile from '$lib/icons/profile.svg';
-	import SideBarToggle from '$lib/components/layout/sidebar-toggle.svelte';
-	import { isSideMenuOpen, toggleSideMenu } from '$lib/store/sidebar.js';
-	import IconSvg from '$lib/components/common/icon-svg.svelte';
 	import {
 		Navbar,
 		NavBrand,
-		NavLi,
-		NavUl,
 		NavHamburger,
 		Avatar,
 		DropdownItem,
@@ -19,7 +9,15 @@
 		Dropdown,
 		DropdownDivider
 	} from 'flowbite-svelte';
-	let activeUrl = false;
+	import { createEventDispatcher } from 'svelte';
+	const dispatch = createEventDispatcher();
+
+	// 即是不一定要connect在一起
+	function handleSignout() {
+		dispatch('signout', {
+			signout: true
+		});
+	}
 </script>
 
 <header>
@@ -29,22 +27,9 @@
 				>千里共乘的</span
 			>
 		</NavBrand>
-		<div class="">
-			{#if $isSideMenuOpen}
-				<SideBarToggle />
-			{/if}
-	
-			<div class="flex items-center md:order-2">
-				
-				<button on:click={() => toggleSideMenu()} type="button">
-					<!-- <img src={Profile} alt="group" /> -->
-					<Avatar id="avatar-menu" src="/images/profile-picture-3.webp" />
-					
-				</button>
-			</div>
-		</div>
-		<!-- <div class="flex items-center md:order-2">
-			<Avatar id="avatar-menu" src="/images/profile-picture-3.webp" />
+
+		<div class="flex items-center md:order-2">
+			<Avatar id="avatar-menu" src="/images/profile-picture-2.webp" />
 			<NavHamburger class1="w-full md:flex md:w-auto md:order-1" />
 		</div>
 		<Dropdown placement="bottom" triggeredBy="#avatar-menu">
@@ -52,15 +37,13 @@
 				<span class="block text-sm">Bonnie Green</span>
 				<span class="block truncate text-sm font-medium">name@flowbite.com</span>
 			</DropdownHeader>
-			<DropdownItem>Dashboard</DropdownItem>
-			<DropdownItem>Settings</DropdownItem>
-			<DropdownItem>Earnings</DropdownItem>
+			<DropdownItem><a href="#">個人資料</a></DropdownItem>
+			<DropdownItem><a href="/protected/notification"></a>通知</DropdownItem>
+			<DropdownItem><a href="/protected/group">群組</a></DropdownItem>
 			<DropdownDivider />
-			<DropdownItem>Sign out</DropdownItem>
-		</Dropdown> -->
+			<DropdownItem><button on:click={handleSignout}>登出</button></DropdownItem>
+		</Dropdown>
 	</Navbar>
-
-
 </header>
 
 <style>

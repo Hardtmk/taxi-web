@@ -1,6 +1,9 @@
 <script>
 	import { Card, Listgroup, Avatar, Button } from 'flowbite-svelte';
 	import SectionHeader from '$lib/components/group/section-header.svelte';
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
 
 	export let list = [];
 </script>
@@ -15,9 +18,14 @@
 					{item?.name}
 				</p>
 			</div>
+			<!-- 就要check本身這個成員是否存在 -->
 			<div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-				<Button size="sm" class="text-balck rounded-3xl bg-transparent outline-1 outline-1"
-					>移除群組</Button
+				<Button
+					size="sm"
+					class="text-balck rounded-3xl bg-transparent outline-1 outline-1"
+					on:click={() => {
+						dispatch('remove');
+					}}>移除成員</Button
 				>
 			</div>
 		</div>

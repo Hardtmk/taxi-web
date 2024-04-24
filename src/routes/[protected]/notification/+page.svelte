@@ -101,6 +101,7 @@
 			</div>
 			{#if item.hasAction}
 				<div class="flex justify-end space-x-3">
+					<!-- 就要check本身這個member是不是已經存在了 -->
 					<Button size="sm">允許</Button>
 					<Button size="sm">拒絕</Button>
 				</div>

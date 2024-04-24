@@ -11,7 +11,6 @@
 	import { reporter } from '@felte/reporter-svelte';
 	import { validator } from '@felte/validator-zod';
 	import FormErrorMessages from '../../common/form-error-messages..svelte';
-	import { createGroup } from '$lib/api/group';
 	import toast, { Toaster } from 'svelte-french-toast';
 	import { userStore } from '$lib/store/user';
 
@@ -21,18 +20,13 @@
 	const { taxiGroup } = getTaxiGroupContext();
 	const { form, data, setData, isSubmitting, createSubmitHandler, isDirty, reset } = createForm({
 		extend: [validator({ schema: groupFormSchema }), reporter],
-		onSubmit: (/** @type {any} */ values) => {
-			$taxiGroup.created_at = new Date();
-			$taxiGroup.created_by = $userStore.userId;
-			return createGroup($taxiGroup);
-		},
 		onSuccess() {
 			formModal = false;
 			toast.success('搭車群組建立成功');
 			reset();
 			dispatch('reload');
 		},
-
+		
 		onError(err) {
 			if (err.response.status === 500) {
 				toast.error('網絡出現異常');
@@ -45,8 +39,11 @@
 
 <Toaster />
 
+<!--其實你不用理會個folder structure， -->
 <Modal bind:open={formModal} size="xs" autoclose={false} class="w-full">
-	<form use:form>
+	<!-- 不太清楚這個位置的route 是不是protected -->
+	<form use:form on:submit|preventDefault method="post" action="/protected">
+		<Input id="created_by" name="created_by" type="hidden" value={$userStore.userId} />
 		<div class="mb-6 w-full">
 			<Label class="mb-2 block">終點站</Label>
 			<Input id="end_point" name="end_point" type="text" bind:value={$taxiGroup.end_point} />

@@ -1,5 +1,5 @@
-import { tryCatchPromise } from './utils/promise';
-import { request } from './utils/request';
+import { tryCatchPromise } from './lib/utils/promise';
+import { request } from './lib/utils/request';
 import { redirect } from '@sveltejs/kit';
 /** @type {import('@sveltejs/kit').Handle} */
 // @ts-ignore
@@ -39,9 +39,13 @@ export async function handle({ event, resolve }) {
 			throw redirect(302, '/auth/login');
 		}
 	}
+
+	const query = event.url.searchParams.get('signout');
+	console.log(query, 'query 是什麼');
+	if (Boolean(query) == true) {
+		console.log(query);
+		await event.cookies.delete('userId', { path: '/' });
+		throw redirect(302, '/auth/login');
+	}
 	return resolve(event);
 }
-
-
-
-
