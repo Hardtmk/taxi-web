@@ -7,11 +7,9 @@ const initialState = () => {
 	};
 };
 
-
-
 // 這個位置是自己retrieve 返D user profile, 但如果是我的話，應該就隨便吧
 // 人生不走回頭路
-// 
+//
 const createUserStore = async () => {
 	const { subscribe, set, update } = writable(initialState());
 
@@ -20,7 +18,10 @@ const createUserStore = async () => {
 		set,
 		init: (/** @type {{ fullname: string; password: string; email: string; }} */ values) => {
 			update((state) => {
-				return { ...state, ...values };
+				return {
+					...state,
+					...{ userId: values?._id, fullname: values?.name, email: values.email }
+				};
 			});
 		},
 		reset: () => {

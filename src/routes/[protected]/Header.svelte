@@ -10,6 +10,8 @@
 		DropdownDivider
 	} from 'flowbite-svelte';
 	import { createEventDispatcher } from 'svelte';
+	import { userStore } from '$lib/store/user';
+	console.log($userStore, 's');
 	const dispatch = createEventDispatcher();
 
 	// 即是不一定要connect在一起
@@ -39,7 +41,7 @@
 			</DropdownHeader>
 			<DropdownItem><a href="#">個人資料</a></DropdownItem>
 			<DropdownItem><a href="/protected/notification"></a>通知</DropdownItem>
-			<DropdownItem><a href="/protected/group">群組</a></DropdownItem>
+			<DropdownItem><a href="/protected/{$userStore.userId}-group">群組</a></DropdownItem>
 			<DropdownDivider />
 			<DropdownItem><button on:click={handleSignout}>登出</button></DropdownItem>
 		</Dropdown>

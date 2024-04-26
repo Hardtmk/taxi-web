@@ -41,9 +41,8 @@ export async function handle({ event, resolve }) {
 	}
 
 	const query = event.url.searchParams.get('signout');
-	console.log(query, 'query 是什麼');
+
 	if (Boolean(query) == true) {
-		console.log(query);
 		await event.cookies.delete('userId', { path: '/' });
 		throw redirect(302, '/auth/login');
 	}

@@ -32,8 +32,6 @@ export const actions = {
 			});
 
 			event.locals.user = result.data.userInfo;
-		} catch (e) {
-			console.log(e, '錯誤是什麼');
-		}
+		} catch (e) {}
 	}
 };

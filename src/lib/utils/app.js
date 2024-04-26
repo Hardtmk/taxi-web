@@ -9,4 +9,9 @@ const Http = {
 	}
 };
 
+// 因為這個function是async
+// 所以怎麼樣都要await
+
+
+
 export { Http };

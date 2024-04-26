@@ -4,10 +4,10 @@
 	import '../styles.css';
 	import { userStore } from '$lib/store/user';
 	import { goto } from '$app/navigation';
+	export let data;
 
 	const initUserStore = async () => {
-		const userId = sessionStorage.getItem('userId');
-		userStore.init({ userId });
+		userStore.init(data);
 	};
 
 	async function handleSignOut(event) {

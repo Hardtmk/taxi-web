@@ -5,3 +5,7 @@
 
 解決方法：
 1. 不如將其放在layout server
+
+
+閾值錯誤
+MongoDB連接失敗的錯誤

@@ -4,11 +4,11 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	console.log(data, 'data');
+	// console.log(data, 'data');
 
 	let list = [
 		{
-			img: { src: '/images/profile-picture-1.webp', alt: 'Neil Sims' },
+			img: { src: '/images/profile-picture-2.webp', alt: 'Neil Sims' },
 			end_point: '觀塘'
 		},
 		{
@@ -18,7 +18,7 @@
 			value: '$3467'
 		},
 		{
-			img: { src: '/images/profile-picture-3.webp', alt: 'Michael Gough' },
+			img: { src: '/images/profile-picture-2.webp', alt: 'Michael Gough' },
 			end_point: 'Michael Gough',
 			email: 'email@windster.com',
 			value: '$67'

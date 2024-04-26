@@ -9,7 +9,7 @@ import { tryCatchPromise } from '../../../../lib/utils/promise';
 // 唯
 // 發昂慢裡那那個題lol了個額度讀書區被
 //我覺得是可以的，不過明天看吧再
-//今天確實不是 working mode 
+//今天確實不是 working mode
 //
 
 export const load = async ({ params }) => {
@@ -20,13 +20,10 @@ export const load = async ({ params }) => {
 			)
 		);
 
-		console.log(result, 's');
 		if (error) {
 			throw error;
 		}
 
 		return { list: result.data, slug: params.slug };
-	} catch (error) {
-		console.log(error, 'get到某個group id 的錯誤是什麼');
-	}
+	} catch (error) {}
 };

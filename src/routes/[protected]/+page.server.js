@@ -30,8 +30,6 @@ export const actions = {
 				throw error;
 			}
 			return result;
-		} catch (e) {
-			console.log(e, '創造群組的 錯誤是什麼');
-		}
+		} catch (e) {}
 	}
 };

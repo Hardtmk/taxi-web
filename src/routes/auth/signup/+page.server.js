@@ -9,7 +9,6 @@ export const actions = {
 		const password = data.get('password');
 		const payload = { email, password };
 
-		console.log(payload,'payload是')
 		try {
 			const [error, result] = await tryCatchPromise(
 				request().post(
@@ -34,9 +33,6 @@ export const actions = {
 			});
 
 			event.locals.user = result.data.userInfo;
-		} catch (e) {
-			console.log(e, '錯誤是什麼');
-		}
+		} catch (e) {}
 	}
 };
-
